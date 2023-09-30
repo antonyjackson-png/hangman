@@ -1,6 +1,17 @@
 import random
 
 class Hangman:
+    ''' 
+    An implementation of the classic Hangman game.
+
+    Arguments:
+        word_list (list): a list of strings
+        num_lives (int): the number of lives
+        word (string): a word chosen randomly from word_list
+        word_guessed (list): a list of chars
+        num_letters (int): unique number of letters in word
+        list_of_guesses (list): a list of characters
+    '''
     def __init__(self, word_list, num_lives=5):
         self.word_list = word_list
         self.num_lives = num_lives
@@ -10,6 +21,12 @@ class Hangman:
         self.list_of_guesses = []
 
     def check_guess(self, guess):
+        ''' 
+        A function that checks if a guessed letter is in word.
+
+        Arguments:
+            guess (char): a character
+        '''
         guess = guess.lower()
         if guess in self.word:
             print(f'Good guess! {guess} is in the word.')
@@ -26,6 +43,9 @@ class Hangman:
 
 
     def ask_for_input(self):
+        ''' 
+        Function that asks the player to guess a character.
+        '''
         while True:
             guess = input("Guess a letter: ")
             if (len(guess) != 1) or (not guess.isalpha()):
@@ -39,6 +59,12 @@ class Hangman:
 
 
 def play_game(word_list):
+    ''' 
+    Function that initiates a new game.
+
+    Arguments:
+        word_list (list): a list of strings
+    '''
     num_lives = 5
     game = Hangman(word_list, num_lives)
 
